@@ -63,7 +63,8 @@ function showRiddle() {
   const randomRiddle = getRandomData("riddles");
   const container = document.getElementById('riddle-content');
   container.innerHTML = `<p>question: ${randomRiddle.question}</p><p id='answer'>answer:${randomRiddle.answer}</p>`;
-  answer.hidden = true;
+  const riddleAnswer = document.getElementById('answer');
+  riddleAnswer.hidden = true;
 }
 
 /**
@@ -75,15 +76,17 @@ function showRiddle() {
  */
 function revealAnswers() {
   const riddleAnswer = document.getElementById('answer');
-  const container = document.getElementById('riddle-content');
-  answer.hidden = false;
-  if (container.innerHTML === '') {
-    alert('There is no riddle to reveal the answer to!');
-  } else if (answer.hidden === false) {
-    alert('The answer is already revealed!');
-  } else {
-    const randomRiddle = getRandomData("riddles");
+  const riddleContainer = document.getElementById('riddle-content');
+  const riddle = riddleContainer.querySelector('p');
+  if (riddle &&  riddleAnswer.hidden) { 
+    riddleAnswer.hidden = false;}
+  else if (riddle && !riddleAnswer.hidden) {  
+    alert('The answer is already revealed');
   }
+  else {
+    alert('There is no riddle to reveal');
+  }
+ 
 }
 
 
