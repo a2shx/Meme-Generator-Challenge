@@ -86,7 +86,6 @@ function revealAnswers() {
   else {
     alert('There is no riddle to reveal');
   }
- 
 }
 
 
